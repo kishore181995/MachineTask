@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.machinetask.R;
-import com.example.machinetask.activity.CartActvty;
+import com.example.machinetask.activity.CartActivity;
 import com.example.machinetask.activity.MainActivity;
 import com.example.machinetask.model.TestModel;
 
@@ -29,12 +29,12 @@ public class PromoAdapter extends RecyclerView.Adapter<PromoAdapter.MyViewHolder
     PromoAdapter.onClick callback;
     PromoAdapter.onRemove callbaclremove;
 
-    public PromoAdapter(List<TestModel> mLst, CartActvty cartActvty, int i) {
+    public PromoAdapter(List<TestModel> mLst, CartActivity cartActvty, int i) {
         this.context = cartActvty;
-        this.callback = CartActvty.adapter;
+        this.callback = CartActivity.adapter;
         this.mListCodesAdd = mLst;
         this.mainCount = i;
-        this.callbaclremove = CartActvty.callbaclremove;
+        this.callbaclremove = CartActivity.callbaclremove;
     }
 
     public interface onClick{

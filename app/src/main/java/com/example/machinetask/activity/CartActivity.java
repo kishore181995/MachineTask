@@ -3,16 +3,12 @@ package com.example.machinetask.activity;
 import android.annotation.SuppressLint;
 import android.graphics.Paint;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.appcompat.widget.AppCompatImageView;
-import androidx.appcompat.widget.AppCompatRadioButton;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,9 +20,8 @@ import com.example.machinetask.model.TestModel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.prefs.BackingStoreException;
 
-public class CartActvty extends AppCompatActivity {
+public class CartActivity extends AppCompatActivity {
 
     AppCompatTextView showTv,cost;
     AppCompatImageView mbac;
@@ -39,7 +34,7 @@ public class CartActvty extends AppCompatActivity {
     public static PromoAdapter.onClick adapter;
     PromoAdapter promoAdapter;
     AppCompatImageView donet,aeawy;
-    CartActvty.refrsh callback;
+    CartActivity.refrsh callback;
     private boolean open = false;
 
     public static PromoAdapter.onRemove callbaclremove;
@@ -102,14 +97,14 @@ public class CartActvty extends AppCompatActivity {
                     for (int i=0;i<2;i++) {
                         mCheckList.add(mListModel.get(i));
                     }
-                    promoAdapter = new PromoAdapter(mCheckList,CartActvty.this, 1);
+                    promoAdapter = new PromoAdapter(mCheckList, CartActivity.this, 1);
                     showTv.setVisibility(View.VISIBLE);
                 }else {
-                    promoAdapter = new PromoAdapter(mListModel,CartActvty.this, 1);
+                    promoAdapter = new PromoAdapter(mListModel, CartActivity.this, 1);
                     showTv.setVisibility(View.GONE);
                 }
                 mCarttems.setHasFixedSize(true);
-                mCarttems.setLayoutManager(new LinearLayoutManager(CartActvty.this));
+                mCarttems.setLayoutManager(new LinearLayoutManager(CartActivity.this));
                 mCarttems.setAdapter(promoAdapter);
 
                 if (count==0)
@@ -173,16 +168,16 @@ public class CartActvty extends AppCompatActivity {
             {
                 mCheckList.add(mListModel.get(i));
             }
-            promoAdapter = new PromoAdapter(mCheckList,CartActvty.this, 1);
+            promoAdapter = new PromoAdapter(mCheckList, CartActivity.this, 1);
 
             showTv.setVisibility(View.VISIBLE);
         }else
         {
-            promoAdapter = new PromoAdapter(mListModel,CartActvty.this, 1);
+            promoAdapter = new PromoAdapter(mListModel, CartActivity.this, 1);
             showTv.setVisibility(View.GONE);
         }
         mCarttems.setHasFixedSize(true);
-        mCarttems.setLayoutManager(new LinearLayoutManager(CartActvty.this));
+        mCarttems.setLayoutManager(new LinearLayoutManager(CartActivity.this));
         mCarttems.setAdapter(promoAdapter);
 
         showTv.setOnClickListener(new View.OnClickListener() {
@@ -191,9 +186,9 @@ public class CartActvty extends AppCompatActivity {
             public void onClick(View v)
             {
                     mCarttems.removeAllViews();
-                    promoAdapter = new PromoAdapter(mListModel,CartActvty.this, 1);
+                    promoAdapter = new PromoAdapter(mListModel, CartActivity.this, 1);
                     mCarttems.setHasFixedSize(true);
-                    mCarttems.setLayoutManager(new LinearLayoutManager(CartActvty.this));
+                    mCarttems.setLayoutManager(new LinearLayoutManager(CartActivity.this));
                     mCarttems.setAdapter(promoAdapter);
                     showTv.setVisibility(View.GONE);
             }

@@ -18,7 +18,7 @@
         </activity>
 
         <activity
-            android:name=".activity.CartActvty"
+            android:name=".activity.CartActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"/>
 

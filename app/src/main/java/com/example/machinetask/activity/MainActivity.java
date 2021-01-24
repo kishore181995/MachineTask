@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 
@@ -16,9 +15,6 @@ import com.example.machinetask.R;
 import com.example.machinetask.adapter.PromoAdapter;
 import com.example.machinetask.model.TestModel;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView mListRecylerView;
@@ -26,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     //interface
-    public static CartActvty.refrsh adapterCartRefresh;
+    public static CartActivity.refrsh adapterCartRefresh;
     public static PromoAdapter.onClick adapterInterface;
 
     @Override
@@ -53,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         };
 
         //interface calling to handle refreshing
-        adapterCartRefresh = new CartActvty.refrsh() {
+        adapterCartRefresh = new CartActivity.refrsh() {
             @Override
             public void refrshItesm() {
                 mListRecylerView.removeAllViews();
@@ -107,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                         check++;
                     }
                 }
-                Intent cartscreen = new Intent(MainActivity.this,CartActvty.class);
+                Intent cartscreen = new Intent(MainActivity.this, CartActivity.class);
                 startActivity(cartscreen);
             }
         });
