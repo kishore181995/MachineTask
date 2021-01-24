@@ -24,6 +24,7 @@ import com.example.machinetask.model.TestModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.prefs.BackingStoreException;
 
 public class CartActvty extends AppCompatActivity {
 
@@ -54,11 +55,13 @@ public class CartActvty extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.actvty_cart);
 
+        //interface initialization
         callback = MainActivity.adapterCartRefresh;
 
+        //interface calling to handle count and item func
         adapter = new PromoAdapter.onClick() {
             @Override
-            public void applypromoCode(int promo) {
+            public void itemFunc(int promo) {
 
                 int sum=0;
                 for (int i=0;i< mListModel.size();i++)
@@ -69,11 +72,11 @@ public class CartActvty extends AppCompatActivity {
             }
         };
 
+        //interface calling to handle Adapter items when removing items and size less than 2
         callbaclremove = new PromoAdapter.onRemove() {
             @Override
             public void removeItem(String name)
             {
-
                 mCarttems.removeAllViews();
                 for (int i=0;i< AppConstants.mLst.size();i++)
                 {
@@ -92,7 +95,6 @@ public class CartActvty extends AppCompatActivity {
                         sum = sum + (AppConstants.mLst.get(i).getCount()*AppConstants.mLst.get(i).getCost());
                     }
                 }
-                Log.d("CHEC",""+count);
                 cost.setText(""+sum);
                 List<TestModel> mCheckList = new ArrayList<>();
                 if (count>2)
@@ -115,13 +117,10 @@ public class CartActvty extends AppCompatActivity {
                     placeOrder.setVisibility(View.GONE);
                     noitemsTv.setVisibility(View.VISIBLE);
                 }
-
-
-
-
             }
         };
 
+        //intialization
         mCarttems = findViewById(R.id.cartItemsRv);
         showTv = findViewById(R.id.showTv);
         mbac = findViewById(R.id.bacv);
@@ -132,9 +131,7 @@ public class CartActvty extends AppCompatActivity {
         donet  = findViewById(R.id.dneRb);
         aeawy  = findViewById(R.id.taeRb);
 
-
-
-
+        //on Click
         donet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -142,7 +139,6 @@ public class CartActvty extends AppCompatActivity {
                 aeawy.setBackgroundResource(R.drawable.empty);
             }
         });
-
         aeawy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -154,25 +150,11 @@ public class CartActvty extends AppCompatActivity {
         mbac.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for (int i=0;i< AppConstants.mLst.size();i++)
-                {
-                    for (int j=0;j< mListModel.size();j++)
-                    {
-                        if (mListModel.get(j).getName().equalsIgnoreCase(AppConstants.mLst.get(i).getName()))
-                        {
-                            AppConstants.mLst.remove(i);
-                            AppConstants.mLst.add(i,mListModel.get(j));
-                        }
-                    }
-                }
-                if (callback!=null)
-                {
-                    callback.refrshItesm();
-                }
-                finish();
+                BackPressed();
             }
         });
 
+        //Setting of the data
         for (int i=0;i< AppConstants.mLst.size();i++)
         {
             if (AppConstants.mLst.get(i).isCheck()){
@@ -222,8 +204,10 @@ public class CartActvty extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-//        super.onBackPressed();
+        BackPressed();
+    }
 
+    private void BackPressed() {
         for (int i=0;i< AppConstants.mLst.size();i++)
         {
             for (int j=0;j< mListModel.size();j++)

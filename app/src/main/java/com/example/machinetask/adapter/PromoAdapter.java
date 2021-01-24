@@ -38,7 +38,7 @@ public class PromoAdapter extends RecyclerView.Adapter<PromoAdapter.MyViewHolder
     }
 
     public interface onClick{
-        public void applypromoCode(int promo);
+        public void itemFunc(int promo);
     }
 
     public interface onRemove
@@ -176,7 +176,7 @@ public class PromoAdapter extends RecyclerView.Adapter<PromoAdapter.MyViewHolder
         }
 
         if (callback!=null){
-            callback.applypromoCode(count);
+            callback.itemFunc(count);
         }
     }
 
