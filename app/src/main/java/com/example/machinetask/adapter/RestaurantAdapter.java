@@ -21,15 +21,15 @@ import com.example.machinetask.model.TestModel;
 
 import java.util.List;
 
-public class PromoAdapter extends RecyclerView.Adapter<PromoAdapter.MyViewHolder> {
+public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.MyViewHolder> {
 
     List<TestModel> mListCodesAdd;
     Context context;
     int mainCount=0;
-    PromoAdapter.onClick callback;
-    PromoAdapter.onRemove callbaclremove;
+    RestaurantAdapter.onClick callback;
+    RestaurantAdapter.onRemove callbaclremove;
 
-    public PromoAdapter(List<TestModel> mLst, CartActivity cartActvty, int i) {
+    public RestaurantAdapter(List<TestModel> mLst, CartActivity cartActvty, int i) {
         this.context = cartActvty;
         this.callback = CartActivity.adapter;
         this.mListCodesAdd = mLst;
@@ -46,7 +46,7 @@ public class PromoAdapter extends RecyclerView.Adapter<PromoAdapter.MyViewHolder
         public void removeItem(String name);
     }
 
-    public PromoAdapter(List<TestModel> mListCodes, MainActivity promoCodesActivity) {
+    public RestaurantAdapter(List<TestModel> mListCodes, MainActivity promoCodesActivity) {
         this.context = promoCodesActivity;
         this.mListCodesAdd = mListCodes;
         callback= MainActivity.adapterInterface;
@@ -54,10 +54,10 @@ public class PromoAdapter extends RecyclerView.Adapter<PromoAdapter.MyViewHolder
 
     @NonNull
     @Override
-    public PromoAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RestaurantAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.adapter_items_restaurant, parent, false);
-        return new PromoAdapter.MyViewHolder(itemView);
+        return new RestaurantAdapter.MyViewHolder(itemView);
     }
 
     @SuppressLint("SetTextI18n")

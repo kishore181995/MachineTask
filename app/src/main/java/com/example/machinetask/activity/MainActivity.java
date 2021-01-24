@@ -12,7 +12,7 @@ import android.view.Window;
 
 import com.example.machinetask.AppConstants;
 import com.example.machinetask.R;
-import com.example.machinetask.adapter.PromoAdapter;
+import com.example.machinetask.adapter.RestaurantAdapter;
 import com.example.machinetask.model.TestModel;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     //interface
     public static CartActivity.refrsh adapterCartRefresh;
-    public static PromoAdapter.onClick adapterInterface;
+    public static RestaurantAdapter.onClick adapterInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //interface calling to handle count and item func
-        adapterInterface = new PromoAdapter.onClick() {
+        adapterInterface = new RestaurantAdapter.onClick() {
             @Override
             public void itemFunc(int promo) {
                 if(promo>0)
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void refrshItesm() {
                 mListRecylerView.removeAllViews();
-                PromoAdapter promoAdapter = new PromoAdapter(AppConstants.mLst,MainActivity.this);
+                RestaurantAdapter promoAdapter = new RestaurantAdapter(AppConstants.mLst,MainActivity.this);
                 mListRecylerView.setHasFixedSize(true);
                 mListRecylerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
                 mListRecylerView.setAdapter(promoAdapter);
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         AppConstants.mLst.add(new TestModel(0,"Lgaurdio","a passion of cooking ins art for new item",0,20,false));
 
         //Adapte calling above list data
-        PromoAdapter promoAdapter = new PromoAdapter(AppConstants.mLst,MainActivity.this);
+        RestaurantAdapter promoAdapter = new RestaurantAdapter(AppConstants.mLst,MainActivity.this);
         mListRecylerView.setHasFixedSize(true);
         mListRecylerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         mListRecylerView.setAdapter(promoAdapter);

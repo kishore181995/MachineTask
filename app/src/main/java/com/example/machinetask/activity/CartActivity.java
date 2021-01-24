@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.machinetask.AppConstants;
 import com.example.machinetask.R;
-import com.example.machinetask.adapter.PromoAdapter;
+import com.example.machinetask.adapter.RestaurantAdapter;
 import com.example.machinetask.model.TestModel;
 
 import java.util.ArrayList;
@@ -31,13 +31,13 @@ public class CartActivity extends AppCompatActivity {
     int sum=0;
     AppCompatTextView noitemsTv;
     RelativeLayout placeOrder;
-    public static PromoAdapter.onClick adapter;
-    PromoAdapter promoAdapter;
+    public static RestaurantAdapter.onClick adapter;
+    RestaurantAdapter promoAdapter;
     AppCompatImageView donet,aeawy;
     CartActivity.refrsh callback;
     private boolean open = false;
 
-    public static PromoAdapter.onRemove callbaclremove;
+    public static RestaurantAdapter.onRemove callbaclremove;
 
     public interface refrsh
     {
@@ -54,7 +54,7 @@ public class CartActivity extends AppCompatActivity {
         callback = MainActivity.adapterCartRefresh;
 
         //interface calling to handle count and item func
-        adapter = new PromoAdapter.onClick() {
+        adapter = new RestaurantAdapter.onClick() {
             @Override
             public void itemFunc(int promo) {
 
@@ -68,7 +68,7 @@ public class CartActivity extends AppCompatActivity {
         };
 
         //interface calling to handle Adapter items when removing items and size less than 2
-        callbaclremove = new PromoAdapter.onRemove() {
+        callbaclremove = new RestaurantAdapter.onRemove() {
             @Override
             public void removeItem(String name)
             {
@@ -97,10 +97,10 @@ public class CartActivity extends AppCompatActivity {
                     for (int i=0;i<2;i++) {
                         mCheckList.add(mListModel.get(i));
                     }
-                    promoAdapter = new PromoAdapter(mCheckList, CartActivity.this, 1);
+                    promoAdapter = new RestaurantAdapter(mCheckList, CartActivity.this, 1);
                     showTv.setVisibility(View.VISIBLE);
                 }else {
-                    promoAdapter = new PromoAdapter(mListModel, CartActivity.this, 1);
+                    promoAdapter = new RestaurantAdapter(mListModel, CartActivity.this, 1);
                     showTv.setVisibility(View.GONE);
                 }
                 mCarttems.setHasFixedSize(true);
@@ -168,12 +168,12 @@ public class CartActivity extends AppCompatActivity {
             {
                 mCheckList.add(mListModel.get(i));
             }
-            promoAdapter = new PromoAdapter(mCheckList, CartActivity.this, 1);
+            promoAdapter = new RestaurantAdapter(mCheckList, CartActivity.this, 1);
 
             showTv.setVisibility(View.VISIBLE);
         }else
         {
-            promoAdapter = new PromoAdapter(mListModel, CartActivity.this, 1);
+            promoAdapter = new RestaurantAdapter(mListModel, CartActivity.this, 1);
             showTv.setVisibility(View.GONE);
         }
         mCarttems.setHasFixedSize(true);
@@ -186,7 +186,7 @@ public class CartActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                     mCarttems.removeAllViews();
-                    promoAdapter = new PromoAdapter(mListModel, CartActivity.this, 1);
+                    promoAdapter = new RestaurantAdapter(mListModel, CartActivity.this, 1);
                     mCarttems.setHasFixedSize(true);
                     mCarttems.setLayoutManager(new LinearLayoutManager(CartActivity.this));
                     mCarttems.setAdapter(promoAdapter);
